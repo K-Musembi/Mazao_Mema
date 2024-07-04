@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 """county model module"""
 
-from app.models import db
-from app.models.base_model import BaseModel
+from models import db
+from models.base_model import BaseModel
 
 
 class County(BaseModel):
@@ -15,3 +15,7 @@ class County(BaseModel):
     def __init__(self, name):
         """initialize objects"""
         self.name = name
+
+    def __str__(self):
+        """string representation"""
+        return "county object"

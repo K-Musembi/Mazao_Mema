@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+
+{% block title %}Contact Us{% endblock %}
+
+{% block body %}
+  <main class="contacts">
+    <h2>Contact Us</h2>
+    <form action="/feedback" method="post">
+      <h3 style="margin-top: 20px;">Enter name</h3>
+      <input type="text" id="name" name="name" placeholder="Your name">
+      <h3 style="margin-top: 20px;">Enter email</h3>
+      <input type="text" id="email" name="email" placeholder="Your email">
+      <h3 style="margin-top: 20px;">Leave a message</h3>
+      <textarea id="message" rows="5" cols="30"></textarea>
+      <input style="margin-top: 20px;" type="submit" value="Submit">
+    </form>
+  </main>
+  <a href="index.html">Go Back</a>
+{% endblock %}

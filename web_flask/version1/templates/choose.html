@@ -1,20 +1,20 @@
 {% extends "layout.html" %}
 
-{% block title %}Home{% endblock %}
+{% block title %}Choose Service{% endblock %}
 
 {% block body %}
-  <h1>Mazao Mema</h1>
-  <h2>{{ name }} County</h2>
-  <div class="service">
-    <form action="#" method="post">
-      <label for="service"><h2>Choose a Service</h2></label>
+  <main class="service">
+    <h2>Mazao Mema</h2>
+    <h2>{{ name }} County</h2>
+    <form action="/county/service" method="POST">
+    <label for="service">Choose a Service</label><br>
       <select name="service" id="service">
-        <option value="Consultant">Consultants</option>
-        <option value="InputDealer">Input Dealers</option>
-        <option value="Buyer">Market</option>
+        <option value="consultant">Consultants</option>
+        <option value="inputdealer">Input Dealers</option>
+        <option value="buyer">Buyers</option>
       </select>
-      <br>
-      <input type="submit" value="Submit">
+      <br><br>
+      <input type="submit">Submit</button>
     </form>
-  </div>
+  </main>
 {% endblock %}

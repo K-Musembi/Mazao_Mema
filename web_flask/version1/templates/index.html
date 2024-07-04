@@ -3,14 +3,14 @@
 {% block title %}Services{% endblock %}
 
 {% block body %}
-  <h1>Mazao Mema</h1>
-  <div class="county">
+  <main class="county">
+    <h2>Mazao Mema</h2>
     <h2>Welcome</h2>
-    <form action="#" method="post">
-      <label for="county"><h2>Enter a County</h2></label>
+    <form action="/county" method="POST">
+      <label for="county">Enter County name:</label><br>
       <input type="text" name="county" id="county" placeholder="county">
       <br>
-      <input type="submit" value="Submit">
+      <button type="submit">Submit</button>
     </form>
-  </div>
+  </main>
 {% endblock %}

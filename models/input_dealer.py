@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 """input-dealer model module"""
 
-from app.models import db
-from app.models.base_model import BaseModel
+from models import db
+from models.base_model import BaseModel
 
 
 class InputDealer(BaseModel):
@@ -15,3 +15,15 @@ class InputDealer(BaseModel):
     location = db.Column(db.String(50))
     contact = db.Column(db.String(50))
     products_offered = db.Column(db.String(100))
+
+    def __init__(self, name, county_id, location, contact, products_offered=None):
+        """initialize object"""
+        self.name = name
+        self.county_id = county_id
+        self.location = location
+        self.contact = contact
+        self.products_offered = products_offered
+
+    def __str__(self):
+        """string representation"""
+        return "inputdealer object"

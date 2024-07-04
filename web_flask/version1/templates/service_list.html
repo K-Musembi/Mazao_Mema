@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+
+{% block title %}Agri Services{% endblock %}
+
+{% block body %}
+  <main class="agri-services">
+    <h2>{{ name }} County - {{ clss[0].__class__.__name__ }}'s</h2>
+    {% for item in clss %}
+      {% if item.id == cid %}
+        <p>{{ item.name }}</p>
+	<p>{{ item.contacts }}</p>
+      {% endif %}
+    {% endfor %}
+  </main>
+{% endblock %}

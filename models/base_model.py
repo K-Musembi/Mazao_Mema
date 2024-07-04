@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """Base model module"""
 
-from app.models import db
+from models import db
 
 class BaseModel(db.Model):
     """Base model class"""
@@ -10,6 +10,10 @@ class BaseModel(db.Model):
     def add(self):
         """add object to db"""
         db.session.add(self)
+        db.session.commit()
+
+    def save(self):
+        """save to db"""
         db.session.commit()
 
     def delete(self):

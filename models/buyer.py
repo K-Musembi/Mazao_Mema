@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 """buyer model module"""
 
-from app.models import db
-from app.models.base_model import BaseModel
+from models import db
+from models.base_model import BaseModel
 
 
 class Buyer(BaseModel):
@@ -21,3 +21,7 @@ class Buyer(BaseModel):
         self.county_id = county_id
         self.contact = contact
         self.products = products
+
+    def __str__(self):
+        """string representation"""
+        return "buyer object"

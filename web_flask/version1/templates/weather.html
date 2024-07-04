@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+
+{% block title %}Weather{% endblock %}
+
+{% block body %}
+  </main>
+    <form action="/weather_service" method="get">
+      <label for="city">Enter town</label><br>
+      <input type="text" id="city" name="city" required><br><br>
+      <button type="submit">Submit</button>
+    </form>
+  </main>
+{% endblock %}
