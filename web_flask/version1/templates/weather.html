@@ -3,10 +3,11 @@
 {% block title %}Weather{% endblock %}
 
 {% block body %}
-  </main>
+  <main>
+    <h2>Weather service</h2><br>
     <form action="/weather_service" method="get">
-      <label for="city">Enter town</label><br>
-      <input type="text" id="city" name="city" required><br><br>
+      <label for="city">Enter town</label>
+      <input type="text" id="city" name="city" required>
       <button type="submit">Submit</button>
     </form>
   </main>
