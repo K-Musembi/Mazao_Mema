@@ -1,9 +1,12 @@
 #!/usr/bin/python3
 """the main routes"""
 
+from models import County, Consultant, InputDealer, Buyer
 from web_flask.version1.views import app_views
 from flask import render_template, request, session, url_for
 import requests
+
+service_classes = {'consultant': Consultant, 'inputdealer': InputDealer, 'buyer': Buyer}
 
 
 @app_views.route("/", strict_slashes=False)
@@ -16,7 +19,7 @@ def index():
 @app_views.route("/county", methods=['POST'], strict_slashes=False)
 def choose_service():
     """choose county"""
-    county = request.form['county']
+    county = request.form.get('county')
     if county.lower() in ("machakos", "kiambu", "kajiado"):
         session['county'] = county.capitalize()
         return render_template("choose.html", name=county.capitalize())
@@ -47,23 +50,24 @@ def user_message():
 @app_views.route("/county/service", methods=['POST'], strict_slashes=False)
 def render_service():
     """handle service request"""
-    from models import County, Consultant, InputDealer, Buyer
-    
-    service = request.form['service']
+    service = request.form.get('service')
     county = session.get('county')
-    if service == "" or service == None:
-        return render_template("choose.html", name=county)
+    # if service == "" or service == None:
+     #   return render_template("choose.html", name=county)
     
-    clist = County.query.all()
-    cid = next((obj.id for obj in clist if obj.name == county), None)
+    county_list = County.query.all()
+    countyid = next((obj.id for obj in county_list if obj.name == county), None)
     
-    if service == 'inputdealer':
-        clss = InputDealer
-    elif service == 'consultant':
-        clss = Consultant
-    elif service == 'buyer':
-        clss = Buyer
-    return render_template("service_list.html", clss=clss.query.all(), cid=cid, name=county)
+    service_class = service_classes.get(service)
+    service_vendors = service_class.query.all()
+    service_list = []
+    for vendor in service_vendors:
+        if vendor.county_id == countyid:
+            service_list.append(vendor)
+    if len(service_list) == 0:
+        return render_template("no_service.html", county=county)
+    return render_template(
+            "service_list.html", service_list=service_list, county=county, service=service.capitalize())
 
 
 @app_views.route("/weather", strict_slashes=False)

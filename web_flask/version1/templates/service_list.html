@@ -4,12 +4,14 @@
 
 {% block body %}
   <main class="agri-services">
-    <h2>{{ name }} County - {{ clss[0].__class__.__name__ }}'s</h2>
-    {% for item in clss %}
-      {% if item.id == cid %}
-        <p>{{ item.name }}</p>
-	<p>{{ item.contacts }}</p>
-      {% endif %}
+    <h2>{{ county }} County - {{ service }}s</h2>
+    {% for vendor in service_list %}
+      <div class="service-item">
+        <p>{{ vendor.name }}</p>
+	<p>{{ vendor.contact }}</p>
+	<p>{{ vendor.location }}</p>
+      <div>
+      <br>
     {% endfor %}
   </main>
 {% endblock %}
